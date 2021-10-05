@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CompanyController } from './company.controller';
-import { CompanyService } from './company.service';
+import { CompanyController } from '../company.controller';
+import { CompanyService } from '../company.service';
 import { getModelToken } from '@nestjs/mongoose';
-import { MockCompanyModel } from './mock/mock.company.model';
-import { companyDetail } from './mock/mock.data';
+import { MockCompanyModel } from '../mock/mock.company.model';
+import { companyDetail } from '../mock/mock.data';
 
 
 

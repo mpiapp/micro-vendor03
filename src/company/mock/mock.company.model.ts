@@ -1,4 +1,3 @@
-import { InternalServerErrorException } from '@nestjs/common';
 import { companyDetail } from './mock.data';
 
 export class MockCompanyModel {

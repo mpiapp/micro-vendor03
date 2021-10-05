@@ -1,4 +1,4 @@
-import { TextGenerator } from "./text.generator";
+import { TextGenerator } from "../text.generator";
 
 describe('Text Generator Test', () => {
     it('should generate random string', () => {

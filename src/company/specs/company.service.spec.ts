@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CompanyService } from './company.service';
+import { CompanyService } from '../company.service';
 import { getModelToken } from '@nestjs/mongoose';
-import { MockCompanyModel } from './mock/mock.company.model';
-import { companyDetail, companyDetailErr } from './mock/mock.data';
+import { MockCompanyModel } from '../mock/mock.company.model';
+import { companyDetail, companyDetailErr } from '../mock/mock.data';
 
 
 describe('CompanyService', () => {

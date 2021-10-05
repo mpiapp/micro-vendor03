@@ -1,6 +1,5 @@
 import { IsNotEmpty, IsEmail, IsUrl, IsNumber } from 'class-validator';
 import { ApiProperty } from "@nestjs/swagger";
-import { isInt16Array } from 'util/types';
 
 export class companyDetailAddDTO {
     company_code: string;
