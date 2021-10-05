@@ -3,6 +3,8 @@ import { Document } from "mongoose";
 
 @Schema({versionKey: false, strict: "throw"})
 export class Company {
+    _id: string;
+    
     @Prop()
     company_code: string;
 

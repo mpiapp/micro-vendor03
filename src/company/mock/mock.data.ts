@@ -1,5 +1,5 @@
 export const companyDetail = {
-    "company_code":"",
+    "company_code":"TES01",
     "type":"",
     "category":0,
     "legal_name":"",
@@ -18,7 +18,7 @@ export const companyDetail = {
   }
 
   export const companyDetailErr = {
-    "company_code":"",
+    "company_code":"TES01",
     "type":"",
     "category":0,
     "legal_name":"",

@@ -34,11 +34,29 @@ export class CompanyService {
         }
     }
 
-    async editCompanyDetail(id: string, companyDetailEditDTO:  companyDetailEditDTO): Promise<Company | boolean> {
+    async editCompanyDetail(id: string, companyDetailEditDTO:  companyDetailEditDTO): Promise<Company> {
         const companyDetail = companyDetailEditDTO;
 
         try {
 			return await this.companyModel.findOneAndUpdate({ _id: id }, companyDetail, { new: true , useFindAndModify: false})
+		}
+		catch(e) {
+			return e;
+		}
+    }
+
+    async getCompanyDetail(id: string): Promise<Company> {
+        try {
+			return await this.companyModel.findById({ _id: id })
+		}
+		catch(e) {
+			return e;
+		}
+    }
+    
+    async getAllCompany(): Promise<Company[]> {
+        try {
+			return await this.companyModel.find({});
 		}
 		catch(e) {
 			return e;

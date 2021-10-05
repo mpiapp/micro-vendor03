@@ -27,9 +27,11 @@ describe('CompanyService', () => {
     expect(await service.addCompanyDetail(companyDetail)).toMatchObject(companyDetail);
   });
 
+  
   it('should throw an error while add non existing field', async () => {
     let req = service.addCompanyDetail(companyDetailErr)
-    expect(req).resolves.toThrowError('Test Error');
+    expect(req).rejects.toThrowError('Test Error');
   });
+  
 
 });

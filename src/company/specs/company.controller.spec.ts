@@ -5,8 +5,6 @@ import { getModelToken } from '@nestjs/mongoose';
 import { MockCompanyModel } from '../mock/mock.company.model';
 import { companyDetail } from '../mock/mock.data';
 
-
-
 describe('CompanyController', () => {
   let controller: CompanyController;
 
