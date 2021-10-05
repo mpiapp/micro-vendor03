@@ -7,7 +7,7 @@ import { Company } from './schema/company.schema';
 @Controller('company')
 export class CompanyController {
     constructor(private readonly companyService: CompanyService) {}
-
+  
     @Get()
     async getAllCompany(): Promise<Company[]> {
 		  const getAllCompany = await this.companyService.getAllCompany();
@@ -31,7 +31,7 @@ export class CompanyController {
       }
       return addCompany;
 	  }
-
+    
     @Put('/:id')
 	  @UsePipes(ValidationPipe)
 	  async editCompanyDetail(@Param('id') id: string, @Body() companyDetailEdit: companyDetailEditDTO): Promise<Company> {
