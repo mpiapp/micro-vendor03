@@ -1,14 +1,18 @@
-import { IsNotEmpty } from 'class-validator';
+import { IsNotEmpty, IsEmail, IsUrl, IsNumber } from 'class-validator';
 import { ApiProperty } from "@nestjs/swagger";
+import { isInt16Array } from 'util/types';
 
 export class companyDetailAddDTO {
+    company_code: string;
+
     @ApiProperty()
     @IsNotEmpty()
     type: string;
 
     @ApiProperty()
     @IsNotEmpty()
-    category: string;
+    @IsNumber()
+    category: number;
 
     @ApiProperty()
     @IsNotEmpty()
@@ -39,9 +43,11 @@ export class companyDetailAddDTO {
 
     @ApiProperty()
     @IsNotEmpty()
+    @IsEmail()
     email: string;
 
     @ApiProperty()
+    @IsUrl()
     website: string;
 
     @ApiProperty()
@@ -53,3 +59,4 @@ export class companyDetailAddDTO {
     @ApiProperty()
     twitter: string;
 }
+

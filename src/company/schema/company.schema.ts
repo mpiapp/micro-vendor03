@@ -4,10 +4,13 @@ import { Document } from "mongoose";
 @Schema({versionKey: false, strict: "throw"})
 export class Company {
     @Prop()
+    company_code: string;
+
+    @Prop()
     type: string;
 
     @Prop()
-    category: string;
+    category: number;
 
     @Prop()
     legal_name: string;

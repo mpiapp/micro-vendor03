@@ -1,7 +1,7 @@
 export const companyDetail = {
     "company_code":"",
     "type":"",
-    "category":"",
+    "category":0,
     "legal_name":"",
     "alias_name":"",
     "address": "",
@@ -19,7 +19,7 @@ export const companyDetail = {
   export const companyDetailErr = {
     "company_code":"",
     "type":"",
-    "category":"",
+    "category":0,
     "legal_name":"",
     "alias_name":"",
     "address": "",
