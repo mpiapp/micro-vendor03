@@ -31,4 +31,5 @@ describe('CompanyService', () => {
     let req = service.addCompanyDetail(companyDetailErr)
     expect(req).resolves.toThrowError('Test Error');
   });
+
 });

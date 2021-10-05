@@ -13,7 +13,8 @@ export const companyDetail = {
     "website":"",
     "instagram":"",
     "facebook":"",
-    "twitter":""
+    "twitter":"",
+    "_id":"1"
   }
 
   export const companyDetailErr = {
@@ -32,5 +33,6 @@ export const companyDetail = {
     "instagram":"",
     "facebook":"",
     "twitter":"",
-    "notInSchema":""
+    "notInSchema":"",
+    "_id":"1"
   }
