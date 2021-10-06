@@ -5,7 +5,7 @@ import { CompanyRepository } from '../../company/repository/company.repository';
 import { HelperService } from '../../helper/helper.service';
 import { RepositoryMock } from '../../company/mock/repository.mock';
 
-describe('CompanyService', () => {
+describe('Helper Services', () => {
   let service: HelperService;
 
   beforeEach(async () => {
@@ -23,11 +23,11 @@ describe('CompanyService', () => {
     expect(service).toBeDefined();
   });
 
-  it('should create ABBR', () => {
+  it('should create acronym', () => {
       expect(service.createAbbr('PT.LOREMIPSUM')).toBe('LOR');
   })
 
-  it('should generate Company Code', async () => {
+  it('should generate Company Code ', async () => {
     expect(await service.generateCompanyCode('PT.LOREM IPSUM')).toBe('LOR01');
   })
 

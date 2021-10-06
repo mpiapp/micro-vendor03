@@ -7,7 +7,7 @@ import { HelperService } from '../../helper/helper.service';
 import { RepositoryMock } from '../mock/repository.mock';
 import { companyDetail, companyDetailErr } from '../mock/data.mock';
 
-describe('CompanyController', () => {
+describe('Company Controller', () => {
   let controller: CompanyController;
 
   beforeEach(async () => {

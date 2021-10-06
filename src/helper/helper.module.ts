@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { CompanyRepository } from 'src/company/repository/company.repository';
-import { Company, CompanySchema } from 'src/company/schema/company.schema';
+import { CompanyRepository } from '../company/repository/company.repository';
+import { Company, CompanySchema } from '../company/schema/company.schema';
 import { HelperService } from './helper.service';
 @Module({
     imports: [

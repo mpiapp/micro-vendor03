@@ -6,7 +6,7 @@ import { HelperService } from '../../helper/helper.service';
 import { RepositoryMock } from '../mock/repository.mock';
 import { companyDetail } from '../mock/data.mock';
 
-describe('CompanyService', () => {
+describe('Company Service', () => {
   let service: CompanyService;
 
   beforeEach(async () => {
