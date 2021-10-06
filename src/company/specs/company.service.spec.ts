@@ -1,18 +1,19 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { CompanyService } from '../company.service';
 import { getModelToken } from '@nestjs/mongoose';
-import { MockCompanyModel } from '../mock/mock.company.model';
-import { companyDetail, companyDetailErr } from '../mock/mock.data';
-
+import { CompanyRepository } from '../repository/company.repository';
+import { HelperService } from '../../helper/helper.service';
+import { RepositoryMock } from '../mock/repository.mock';
+import { companyDetail } from '../mock/data.mock';
 
 describe('CompanyService', () => {
   let service: CompanyService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [CompanyService, {
+      providers: [CompanyRepository, HelperService, CompanyService, {
         provide: getModelToken('Company'),
-        useValue: MockCompanyModel,
+        useValue: RepositoryMock,
       }],
     }).compile();
 
@@ -27,11 +28,16 @@ describe('CompanyService', () => {
     expect(await service.addCompanyDetail(companyDetail)).toMatchObject(companyDetail);
   });
 
-  
-  it('should throw an error while add non existing field', async () => {
-    let req = service.addCompanyDetail(companyDetailErr)
-    expect(req).rejects.toThrowError('Test Error');
+  it('should get all company', async () => {
+    expect(await service.getAllCompany()).toMatchObject(companyDetail);
+  });
+
+  it('should get company by id', async () => { 
+    expect(await service.getCompanyDetail('1')).toMatchObject(companyDetail);
   });
   
+  it('should edit company by id', async () => {
+    expect(await service.editCompanyDetail('1', companyDetail)).toMatchObject(companyDetail);
+  });
 
 });

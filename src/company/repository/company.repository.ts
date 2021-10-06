@@ -26,7 +26,7 @@ export class CompanyRepository {
         return await this.companyModel.find();
     }
 
-    async getCompanyCodeLike(keyword: string) {
+    async getSimilarCompanyCode(keyword: string) {
         return await this.companyModel
                     .findOne({company_code: {$regex: keyword, $options: 'i'} })
                     .select('company_code')

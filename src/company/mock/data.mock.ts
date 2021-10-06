@@ -2,7 +2,7 @@ export const companyDetail = {
     "company_code":"TES01",
     "type":"",
     "category":0,
-    "legal_name":"",
+    "legal_name":"PT. TESTING",
     "alias_name":"",
     "address": "",
     "longitude":"",
@@ -17,8 +17,10 @@ export const companyDetail = {
     "_id":"1"
   }
 
+  
+
   export const companyDetailErr = {
-    "company_code":"TES01",
+    "company_code":"TES02",
     "type":"",
     "category":0,
     "legal_name":"",
