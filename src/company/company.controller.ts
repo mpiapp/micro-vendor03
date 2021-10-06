@@ -1,4 +1,4 @@
-import { Body, Controller, BadRequestException, Param, Post, Put, UsePipes, ValidationPipe, Get, NotFoundException } from '@nestjs/common';
+import { Body, Controller, BadRequestException, Param, Post, Put, Get, NotFoundException } from '@nestjs/common';
 import { CompanyService } from './company.service';
 import { companyDetailAddDTO } from './dto/company.detail.add.dto';
 import { companyDetailEditDTO } from './dto/company.detail.edit.dto';
@@ -16,29 +16,31 @@ export class CompanyController {
 
     @Get('/:id')
     async getCompanyDetail(@Param('id') id: string): Promise<Company> {
-		  const getCompanyDetail = await this.companyService.getCompanyDetail(id);
-      if(!getCompanyDetail._id) {
-        throw new NotFoundException()
+      try {
+        return await this.companyService.getCompanyDetail(id);
       }
-		  return getCompanyDetail;
+      catch(exception) {
+        throw new BadRequestException([exception.message])
+      }
 	  }
 
     @Post()
     async addCompanyDetail(@Body() companyDetailAdd: companyDetailAddDTO): Promise<Company> {
-		  const addCompany =  await this.companyService.addCompanyDetail(companyDetailAdd);
-      if(!addCompany._id) {
-        throw new BadRequestException(addCompany);
+      try {
+        return await this.companyService.addCompanyDetail(companyDetailAdd);
       }
-      return addCompany;
+		  catch(exception) {
+        throw new BadRequestException([exception.message]); 
+      }
 	  }
     
     @Put('/:id')
-	  @UsePipes(ValidationPipe)
 	  async editCompanyDetail(@Param('id') id: string, @Body() companyDetailEdit: companyDetailEditDTO): Promise<Company> {
-		  const editCompany = await this.companyService.editCompanyDetail(id, companyDetailEdit);
-      if(!editCompany._id) {
-        throw new BadRequestException(editCompany)
+      try {
+        return await this.companyService.editCompanyDetail(id, companyDetailEdit);
       }
-		  return editCompany;
+      catch(exception) {
+        throw new BadRequestException([exception.message]); 
+      }
 	  }
 }

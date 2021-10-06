@@ -2,53 +2,30 @@ import { Injectable } from '@nestjs/common';
 import { companyDetailAddDTO } from './dto/company.detail.add.dto';
 import { companyDetailEditDTO } from './dto/company.detail.edit.dto';
 import { Company } from './schema/company.schema';
-import { StrGenerate  } from '../utils/str.generate';
 import { CompanyRepository } from './repository/company.repository';
+import { HelperService } from '../helper/helper.service';
 
 @Injectable()
 export class CompanyService {
-    constructor(private companyRepository: CompanyRepository) {}
+    constructor(private companyRepository: CompanyRepository, private helper: HelperService) {}
 
     async addCompanyDetail(companyDetailAddDTO: companyDetailAddDTO): Promise<Company> {
-        try {
-            const legalName = companyDetailAddDTO.legal_name;
-            const legalNameAbbr = StrGenerate.companyAbbr(legalName);
-            const similarAbbrObj = await this.companyRepository.getCompanyCodeLike(legalNameAbbr);
-            const similarAbbr = similarAbbrObj !== null ? similarAbbrObj.company_code : '0';
+        const companyDetail = companyDetailAddDTO;
+        const companyCode = await this.helper.generateCompanyCode(companyDetail.legal_name);
+        companyDetail.company_code = companyCode;
 
-            companyDetailAddDTO.company_code = StrGenerate.companyCode(similarAbbr, legalName); 
-            
-            return await this.companyRepository.create(companyDetailAddDTO);
-        }
-        catch(err) {
-            return err;
-        }
+        return await this.companyRepository.create(companyDetail);
     }
 
     async editCompanyDetail(id: string, companyDetailEditDTO:  companyDetailEditDTO): Promise<Company> {
-        try {
-			return await this.companyRepository.update(id, companyDetailEditDTO)
-		}
-		catch(err) {
-			return err;
-		}
+        return await this.companyRepository.update(id, companyDetailEditDTO)
     }
 
     async getCompanyDetail(id: string): Promise<Company> {
-        try {
-			return await this.companyRepository.getOne(id)
-		}
-		catch(err) {
-			return err;
-		}
+        return await this.companyRepository.getOne(id)
     }
 
     async getAllCompany(): Promise<Company[]> {
-        try {
-			return await this.companyRepository.getAll();
-		}
-		catch(err) {
-			return err;
-		}
+        return await this.companyRepository.getAll();
     }
 }

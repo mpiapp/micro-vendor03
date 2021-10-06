@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose"
 import { Document } from "mongoose";
 
-@Schema({versionKey: false, strict: "throw"})
+@Schema({versionKey: false, strict: "throw",  timestamps: true})
 export class Company {
     _id: string;
     
