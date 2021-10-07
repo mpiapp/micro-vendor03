@@ -7,7 +7,7 @@ export class HelperService {
 
     createAbbr(companyName: string) {
         const abbr = companyName.replace(/[^A-Za-z]/g, '')
-                    .replace(/PT|CV|MV|UD|/g, '')
+                    .replace(/PT|CV|MV|UD/g, '')
                     .substring(0, 3)
                     .toUpperCase();
         return abbr;
