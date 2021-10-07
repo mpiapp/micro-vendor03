@@ -13,18 +13,18 @@ export class CompanyService {
         const companyCode = await this.helper.generateCompanyCode(companyDetailAddDTO.legal_name);
         companyDetailAddDTO.company_code = companyCode;
 
-        return await this.companyRepository.create(companyDetailAddDTO);
+        return this.companyRepository.create(companyDetailAddDTO);
     }
 
     async editCompanyDetail(id: string, companyDetailEditDTO:  companyDetailEditDTO): Promise<Company> {
-        return await this.companyRepository.update(id, companyDetailEditDTO)
+        return this.companyRepository.update(id, companyDetailEditDTO)
     }
 
     async getCompanyDetail(id: string): Promise<Company> {
-        return await this.companyRepository.getOne(id)
+        return this.companyRepository.getOne(id)
     }
 
     async getAllCompany(): Promise<Company[]> {
-        return await this.companyRepository.getAll();
+        return this.companyRepository.getAll();
     }
 }
