@@ -9,23 +9,22 @@ import { HelperService } from '../helper/helper.service';
 export class CompanyService {
     constructor(private companyRepository: CompanyRepository, private helper: HelperService) {}
 
-    async addCompanyDetail(companyDetailAddDTO: companyDetailAddDTO): Promise<Company> {
-        const companyDetail = companyDetailAddDTO;
+    async addCompanyDetail(companyDetail: companyDetailAddDTO): Promise<Company> {
         const companyCode = await this.helper.generateCompanyCode(companyDetail.legal_name);
         companyDetail.company_code = companyCode;
 
-        return await this.companyRepository.create(companyDetail);
+        return this.companyRepository.create(companyDetail);
     }
 
-    async editCompanyDetail(id: string, companyDetailEditDTO:  companyDetailEditDTO): Promise<Company> {
-        return await this.companyRepository.update(id, companyDetailEditDTO)
+    async editCompanyDetail(id: string, companyDetail:  companyDetailEditDTO): Promise<Company> {
+        return this.companyRepository.update(id, companyDetail)
     }
 
     async getCompanyDetail(id: string): Promise<Company> {
-        return await this.companyRepository.getOne(id)
+        return this.companyRepository.getOne(id)
     }
 
     async getAllCompany(): Promise<Company[]> {
-        return await this.companyRepository.getAll();
+        return this.companyRepository.getAll();
     }
 }

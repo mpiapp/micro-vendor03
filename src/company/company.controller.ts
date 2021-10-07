@@ -1,4 +1,4 @@
-import { Body, Controller, BadRequestException, Param, Post, Put, Get, NotFoundException } from '@nestjs/common';
+import { Body, Controller, BadRequestException, Param, Post, Put, Get } from '@nestjs/common';
 import { CompanyService } from './company.service';
 import { companyDetailAddDTO } from './dto/company.detail.add.dto';
 import { companyDetailEditDTO } from './dto/company.detail.edit.dto';
@@ -10,8 +10,7 @@ export class CompanyController {
   
     @Get()
     async getAllCompany(): Promise<Company[]> {
-		  const getAllCompany = await this.companyService.getAllCompany();
-		  return getAllCompany;
+		  return await this.companyService.getAllCompany();
 	  }
 
     @Get('/:id')
