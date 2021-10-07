@@ -10,12 +10,12 @@ export class CompanyRepository {
 
     constructor(@InjectModel(Company.name) private companyModel: Model<CompanyDocument>) {}
 
-    async create(companyDetailAddDTO: companyDetailAddDTO): Promise<Company> {
-        return await this.companyModel.create(companyDetailAddDTO);
+    async create(companyDetail: companyDetailAddDTO): Promise<Company> {
+        return await this.companyModel.create(companyDetail);
     }
 
-    async update(id: string, companyDetailEditDTO: companyDetailEditDTO): Promise<Company> {
-        return await this.companyModel.findOneAndUpdate({ _id: id }, companyDetailEditDTO, { new: true , useFindAndModify: false})
+    async update(id: string, companyDetail: companyDetailEditDTO): Promise<Company> {
+        return await this.companyModel.findOneAndUpdate({ _id: id }, companyDetail, { new: true , useFindAndModify: false})
     }
 
     async getOne(id: string): Promise<Company> {
