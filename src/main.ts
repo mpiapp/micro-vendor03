@@ -8,7 +8,8 @@ import BugsnagPluginExpress from '@bugsnag/plugin-express';
 Bugsnag.start({
   apiKey: process.env.BUGSNAG_API_KEY,
   plugins: [BugsnagPluginExpress],
-  appVersion: process.env.APP_VERSION
+  appVersion: process.env.APP_VERSION,
+  logger: null
 });
 
 async function bootstrap() {
