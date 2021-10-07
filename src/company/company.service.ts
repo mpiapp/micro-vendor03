@@ -10,11 +10,10 @@ export class CompanyService {
     constructor(private companyRepository: CompanyRepository, private helper: HelperService) {}
 
     async addCompanyDetail(companyDetailAddDTO: companyDetailAddDTO): Promise<Company> {
-        const companyDetail = companyDetailAddDTO;
-        const companyCode = await this.helper.generateCompanyCode(companyDetail.legal_name);
-        companyDetail.company_code = companyCode;
+        const companyCode = await this.helper.generateCompanyCode(companyDetailAddDTO.legal_name);
+        companyDetailAddDTO.company_code = companyCode;
 
-        return await this.companyRepository.create(companyDetail);
+        return await this.companyRepository.create(companyDetailAddDTO);
     }
 
     async editCompanyDetail(id: string, companyDetailEditDTO:  companyDetailEditDTO): Promise<Company> {
