@@ -82,7 +82,8 @@
       "main.ts",
       "company.module.ts",
       "helper.module.ts",
-      "verification.module.ts"
+      "verification.module.ts",
+      "role.module.ts"
     ],
     "testResultsProcessor":"jest-sonar-reporter"
   }
