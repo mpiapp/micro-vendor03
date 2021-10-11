@@ -1,11 +1,12 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose"
 import { Document } from "mongoose";
+import { VerificationStatus } from "../company.enum";
 
 @Schema({versionKey: false, strict: "throw",  timestamps: true})
 export class Company {
     _id: string;
     
-    @Prop()
+    @Prop({unique: true, index: true})
     company_code: string;
 
     @Prop()
@@ -14,7 +15,7 @@ export class Company {
     @Prop()
     category: number;
 
-    @Prop()
+    @Prop({unique: true, index: true})
     legal_name: string;
 
     @Prop()
@@ -49,6 +50,9 @@ export class Company {
 
     @Prop()
     twitter: string;
+
+    @Prop({default: VerificationStatus.UNVERIFIED})
+    verification_status: string;
 }
 
 export const CompanySchema = SchemaFactory.createForClass(Company);

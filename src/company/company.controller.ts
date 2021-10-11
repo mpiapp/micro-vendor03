@@ -3,7 +3,9 @@ import { CompanyService } from './company.service';
 import { companyDetailAddDTO } from './dto/company.detail.add.dto';
 import { companyDetailEditDTO } from './dto/company.detail.edit.dto';
 import { Company } from './schema/company.schema';
+import { ApiTags } from "@nestjs/swagger";
 
+@ApiTags('Company Module')
 @Controller('company')
 export class CompanyController {
     constructor(private readonly companyService: CompanyService) {}
