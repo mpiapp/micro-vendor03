@@ -1,32 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
   <file path="/Users/zulkhaery/Sites/micro-vendor/src/verification/specs/verification.service.spec.ts">
-    <testCase name="VerificationService should be defined" duration="5"/>
+    <testCase name="VerificationService should be defined" duration="6"/>
+    <testCase name="VerificationService shoud add or edit verification data" duration="5"/>
+    <testCase name="VerificationService should add verification data" duration="3"/>
   </file>
   <file path="/Users/zulkhaery/Sites/micro-vendor/src/helper/specs/helper.service.spec.ts">
-    <testCase name="Helper Services should be defined" duration="20"/>
+    <testCase name="Helper Services should be defined" duration="6"/>
     <testCase name="Helper Services should create acronym" duration="2"/>
-    <testCase name="Helper Services should generate Company Code " duration="2"/>
-    <testCase name="Helper Services should generate Company Code" duration="1"/>
+    <testCase name="Helper Services should generate Company Code " duration="1"/>
+    <testCase name="Helper Services should generate Company Code" duration="3"/>
   </file>
   <file path="/Users/zulkhaery/Sites/micro-vendor/src/company/specs/company.service.spec.ts">
-    <testCase name="Company Service should be defined" duration="7"/>
-    <testCase name="Company Service should add company detail" duration="4"/>
-    <testCase name="Company Service should get all company" duration="2"/>
+    <testCase name="Company Service should be defined" duration="6"/>
+    <testCase name="Company Service should add company detail" duration="3"/>
+    <testCase name="Company Service should get all company" duration="1"/>
     <testCase name="Company Service should get company by id" duration="2"/>
-    <testCase name="Company Service should edit company by id" duration="2"/>
+    <testCase name="Company Service should edit company by id" duration="1"/>
   </file>
   <file path="/Users/zulkhaery/Sites/micro-vendor/src/verification/specs/verification.controller.spec.ts">
-    <testCase name="VerificationController should be defined" duration="11"/>
+    <testCase name="VerificationController should be defined" duration="5"/>
+    <testCase name="VerificationController shoud add or edit verification data" duration="2"/>
+    <testCase name="VerificationController should throw an error when add verification data" duration="4"/>
+    <testCase name="VerificationController should throw an error when get verification data" duration="4"/>
   </file>
   <file path="/Users/zulkhaery/Sites/micro-vendor/src/company/specs/company.controller.spec.ts">
     <testCase name="Company Controller should be defined" duration="5"/>
-    <testCase name="Company Controller should add company detail" duration="3"/>
+    <testCase name="Company Controller should add company detail" duration="2"/>
     <testCase name="Company Controller should edit company detail" duration="1"/>
     <testCase name="Company Controller should get company detail" duration="2"/>
     <testCase name="Company Controller should get all company" duration="1"/>
-    <testCase name="Company Controller should throw an error when get not exists company" duration="4"/>
-    <testCase name="Company Controller should throw an error when add company detail" duration="2"/>
+    <testCase name="Company Controller should throw an error when get not exists company" duration="5"/>
+    <testCase name="Company Controller should throw an error when add company detail" duration="1"/>
     <testCase name="Company Controller should throw an error when edit company detail" duration="1"/>
   </file>
 </testExecutions>
