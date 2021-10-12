@@ -1,29 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="/Users/zulkhaery/Sites/micro-vendor/src/verification/specs/verification.service.spec.ts">
-    <testCase name="VerificationService should be defined" duration="5"/>
-    <testCase name="VerificationService shoud add or edit verification data" duration="2"/>
-    <testCase name="VerificationService should add verification data" duration="1"/>
+  <file path="/Users/zulkhaery/Sites/micro-vendor/src/user/specs/user.service.spec.ts">
   </file>
-  <file path="/Users/zulkhaery/Sites/micro-vendor/src/role/specs/role.service.spec.ts">
-    <testCase name="RoleService should be defined" duration="6"/>
-    <testCase name="RoleService should crete new custom role" duration="2"/>
-    <testCase name="RoleService should edit custom role" duration="1"/>
+  <file path="/Users/zulkhaery/Sites/micro-vendor/src/verification/specs/verification.service.spec.ts">
+    <testCase name="VerificationService should be defined" duration="6"/>
+    <testCase name="VerificationService shoud add or edit verification data" duration="1"/>
+    <testCase name="VerificationService should add verification data" duration="2"/>
   </file>
   <file path="/Users/zulkhaery/Sites/micro-vendor/src/verification/specs/verification.controller.spec.ts">
-    <testCase name="VerificationController should be defined" duration="6"/>
-    <testCase name="VerificationController shoud add or edit verification data" duration="2"/>
-    <testCase name="VerificationController should throw an error when add verification data" duration="5"/>
-    <testCase name="VerificationController should throw an error when get verification data" duration="2"/>
+    <testCase name="VerificationController should be defined" duration="7"/>
+    <testCase name="VerificationController shoud add or edit verification data" duration="1"/>
+    <testCase name="VerificationController should throw an error when add verification data" duration="4"/>
+    <testCase name="VerificationController should throw an error when get verification data" duration="1"/>
   </file>
-  <file path="/Users/zulkhaery/Sites/micro-vendor/src/role/specs/role.controller.spec.ts">
-    <testCase name="RoleController should be defined" duration="6"/>
-    <testCase name="RoleController should add new role" duration="2"/>
-    <testCase name="RoleController should fail when add new role" duration="4"/>
-    <testCase name="RoleController should edit a role" duration="2"/>
-    <testCase name="RoleController should fail edit" duration="1"/>
-    <testCase name="RoleController should get role detail by _id" duration="1"/>
-    <testCase name="RoleController should thrown an error while get non existing role _id" duration="2"/>
-    <testCase name="RoleController should get all role" duration="1"/>
+  <file path="/Users/zulkhaery/Sites/micro-vendor/src/user/specs/user.controller.spec.ts">
+    <testCase name="UserController should be defined" duration="5"/>
   </file>
 </testExecutions>
