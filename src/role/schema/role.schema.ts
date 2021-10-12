@@ -5,7 +5,7 @@ import { Document } from "mongoose";
 export class Role {
     _id: string;
 
-    @Prop()
+    @Prop({ unique: true, index: true })
     name: string;
 
     @Prop()
