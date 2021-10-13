@@ -73,4 +73,8 @@ describe('UserService', () => {
   it('should get all user', async () => {
     expect(await service.getUser('1')).toBe(goodData);
   })
+
+  it('should get detail user in company', async() => {
+    expect(await service.getUserDetail('1','1')).toBe(true);
+  })
 });

@@ -22,4 +22,8 @@ export class UserRepository {
     async getAll(companyId: string): Promise<User[]> {
         return await this.userModel.find({ company_id: companyId});
     }
+
+    async getOne(companyId: string, authId: string): Promise<User> {
+        return await this.userModel.findOne({ company_id: companyId, auth_id: authId});
+    }
 }
