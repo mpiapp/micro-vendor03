@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
   <file path="/Users/zulkhaery/Sites/micro-vendor/src/user/specs/user.service.spec.ts">
-    <testCase name="UserService should be defined" duration="5"/>
+    <testCase name="UserService should be defined" duration="6"/>
     <testCase name="UserService should add user" duration="2"/>
     <testCase name="UserService should edit user" duration="1"/>
     <testCase name="UserService should failed edit user" duration="7"/>
-    <testCase name="UserService should get all user" duration="1"/>
+    <testCase name="UserService should get all user" duration="2"/>
+    <testCase name="UserService should get detail user in company" duration="1"/>
   </file>
   <file path="/Users/zulkhaery/Sites/micro-vendor/src/user/specs/user.controller.spec.ts">
     <testCase name="UserController should be defined" duration="5"/>
-    <testCase name="UserController should add new user" duration="1"/>
+    <testCase name="UserController should add new user" duration="2"/>
     <testCase name="UserController should fail add new user" duration="5"/>
-    <testCase name="UserController should  edit user" duration="1"/>
+    <testCase name="UserController should  edit user" duration="2"/>
     <testCase name="UserController should fail edit user" duration="1"/>
     <testCase name="UserController should get all user" duration="1"/>
     <testCase name="UserController should throw error get user from non existing company" duration="2"/>
+    <testCase name="UserController should get detail user in company" duration="1"/>
   </file>
 </testExecutions>

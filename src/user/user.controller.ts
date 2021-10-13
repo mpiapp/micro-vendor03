@@ -43,4 +43,9 @@ export class UserController {
             throw new BadRequestException(exception.message)
         }
     }
+
+    @Get('/:company_id/:auth_id')
+    async getUserDetail(@Param('company_id') company_id: string, @Param('auth_id') auth_id: string): Promise<User> {
+        return await this.userService.getUserDetail(company_id, auth_id);
+    }
 }
