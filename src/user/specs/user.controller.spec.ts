@@ -101,4 +101,8 @@ describe('UserController', () => {
   it('should throw error get user from non existing company', () => {
     expect(controller.getUser('2')).rejects.toThrow('Error');
   })
+
+  it('should get detail user in company', async () => {
+    expect(await controller.getUserDetail('1','1')).toBe(goodData);
+  })
 });

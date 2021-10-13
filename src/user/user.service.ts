@@ -12,11 +12,15 @@ export class UserService {
         return await this.userRepository.create(user);
     }
 
-    async editUser(auth_id: string, user: UserEditDTO): Promise<User> {
-        return await this.userRepository.update(auth_id, user);
+    async editUser(authId: string, user: UserEditDTO): Promise<User> {
+        return await this.userRepository.update(authId, user);
     }
     
-    async getUser(company_id: string): Promise<User[]> {
-        return await this.userRepository.getAll(company_id);
+    async getUser(companyId: string): Promise<User[]> {
+        return await this.userRepository.getAll(companyId);
+    }
+
+    async getUserDetail(companyId: string, authId): Promise<User> {
+        return await this.userRepository.getOne(companyId, authId);
     }
 }
