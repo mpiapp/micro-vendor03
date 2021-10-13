@@ -1,6 +1,7 @@
-import { BadRequestException, Body, Controller, Post } from '@nestjs/common';
+import { BadRequestException, Body, Controller, HttpException, NotFoundException, Param, Post, Put } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { UserAddDTO } from './dto/user.add.dto';
+import { UserEditDTO } from './dto/user.edit.dto';
 import { User } from './schema/user.schema';
 import { UserService } from './user.service';
 
@@ -13,16 +14,23 @@ export class UserController {
     @Post()
     async createUser(@Body() user: UserAddDTO): Promise<User> {
         try {
-            // call user microservice here, wait for microservices API finish
-
-            // then
-            user.auth_id = 'X';
-        
             delete user.password;
             return await this.userService.createUser(user);
         }
         catch(exception) {
             throw new BadRequestException(exception.message)
         }
+    }
+
+    @Put('/:auth_id')
+    async editUser(@Param('auth_id') auth_id: string, @Body() user: UserEditDTO): Promise<User> {
+
+        try {
+            delete user.password;
+            return await this.userService.editUser(auth_id, user);            
+        }
+        catch(exception) {
+            throw new BadRequestException(exception.message)
+        } 
     }
 }

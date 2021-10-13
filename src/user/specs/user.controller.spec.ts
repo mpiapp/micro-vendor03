@@ -5,7 +5,18 @@ import { UserController } from '../user.controller';
 import { UserService } from '../user.service';
 
 const goodData = {
-  "company_id": "string",
+  "auth_id": "1",
+  "company_id": "123",
+  "email": "string",
+  "role_id": "string",
+  "username": "string",
+  "fullname": "string",
+  "password": "string"
+}
+
+const badData = {
+  "auth_id": "2",
+  "company_id": "345",
   "email": "string",
   "role_id": "string",
   "username": "string",
@@ -15,6 +26,24 @@ const goodData = {
 
 const RepositoryMock = {
   create: (dto) => {
+    if(dto.company_id != '123') {
+      throw new Error('Error');
+    }
+
+    return dto;
+  },
+  findOne: (id) => {
+    if(id.auth_id != '1') {
+      throw new Error('Error');
+    }
+
+    return goodData;
+  },
+  findOneAndUpdate: (id, dto) => {
+    if(id.auth_id != '1') {
+      throw new Error('Error');
+    }
+
     return dto;
   }
 }
@@ -39,5 +68,21 @@ describe('UserController', () => {
 
   it('should be defined', () => {
     expect(controller).toBeDefined();
+  });
+
+  it('should add new user', async () => {
+    expect(await controller.createUser(goodData)).toBe(goodData);
+  });
+
+  it('should fail add new user', () => {
+    expect(controller.createUser(badData)).rejects.toThrow('Error');
+  });
+
+  it('should  edit user', async () => {
+    expect(await controller.editUser('1',goodData)).toBe(goodData);
+  });
+
+  it('should fail edit user', () => {
+    expect(controller.editUser('2',goodData)).rejects.toThrow('Error');
   });
 });
