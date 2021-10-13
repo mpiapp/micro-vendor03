@@ -85,7 +85,6 @@
       "verification.module.ts",
       "role.module.ts",
       "user.module.ts"
-    ],
-    "testResultsProcessor":"jest-sonar-reporter"
+    ]
   }
 }
