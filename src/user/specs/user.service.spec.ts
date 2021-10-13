@@ -31,6 +31,12 @@ const RepositoryMock = {
     }
 
     return dto;
+  },
+  find: (id) => {
+
+    if(id.company_id === '1') {
+      return goodData;
+    }
   }
 }
 
@@ -63,4 +69,8 @@ describe('UserService', () => {
   it('should failed edit user', () => {
     expect(service.editUser('2', goodData)).rejects.toThrow('Error');
   });
+
+  it('should get all user', async () => {
+    expect(await service.getUser('1')).toBe(goodData);
+  })
 });
