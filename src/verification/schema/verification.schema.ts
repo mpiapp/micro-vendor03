@@ -7,13 +7,8 @@ import { Company } from "../../company/schema/company.schema";
 export class Verification {
     _id: string;
   
-    @Prop({
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Company',
-        unique: true, 
-        index: true 
-      })
-      company_id: Types.ObjectId;
+    @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Company', unique: true, index: true })
+    company_id: Types.ObjectId;
 
     @Prop()
     documents: [][];
