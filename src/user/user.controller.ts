@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, HttpException, NotFoundException, Param, Post, Put } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, HttpException, NotFoundException, Param, Post, Put } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { UserAddDTO } from './dto/user.add.dto';
 import { UserEditDTO } from './dto/user.edit.dto';
@@ -32,5 +32,15 @@ export class UserController {
         catch(exception) {
             throw new BadRequestException(exception.message)
         } 
+    }
+
+    @Get('/:company_id')
+    async getUser(@Param('company_id') company_id: string): Promise<User[]> {
+        try {
+            return await this.userService.getUser(company_id);
+        }
+        catch(exception) {
+            throw new BadRequestException(exception.message)
+        }
     }
 }

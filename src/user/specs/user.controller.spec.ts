@@ -45,6 +45,14 @@ const RepositoryMock = {
     }
 
     return dto;
+  },
+  find: (id) => {
+
+    if(id.company_id !== '1') {
+      throw new Error('Error');
+    }
+
+    return goodData;
   }
 }
 
@@ -85,4 +93,12 @@ describe('UserController', () => {
   it('should fail edit user', () => {
     expect(controller.editUser('2',goodData)).rejects.toThrow('Error');
   });
+
+  it('should get all user', async () => {
+    expect(await controller.getUser('1')).toBe(goodData);
+  })
+
+  it('should throw error get user from non existing company', () => {
+    expect(controller.getUser('2')).rejects.toThrow('Error');
+  })
 });

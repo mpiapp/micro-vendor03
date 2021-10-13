@@ -15,4 +15,8 @@ export class UserService {
     async editUser(auth_id: string, user: UserEditDTO): Promise<User> {
         return await this.userRepository.update(auth_id, user);
     }
+    
+    async getUser(company_id: string): Promise<User[]> {
+        return await this.userRepository.getAll(company_id);
+    }
 }
