@@ -85,10 +85,7 @@
       "verification.module.ts",
       "role.module.ts",
       "user.module.ts",
-      "mybuyer.module.ts",
-      "mybuyer.add.dto.ts",
-      "mybuyer.repository.ts",
-      "mybuyer.service.ts"
+      "mybuyer.module.ts"
     ]
   }
 }
