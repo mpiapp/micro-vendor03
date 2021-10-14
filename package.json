@@ -84,8 +84,11 @@
       "helper.module.ts",
       "verification.module.ts",
       "role.module.ts",
-      "user.module.ts"
-    ],
-    "testResultsProcessor":"jest-sonar-reporter"
+      "user.module.ts",
+      "mybuyer.module.ts",
+      "mybuyer.add.dto.ts",
+      "mybuyer.repository.ts",
+      "mybuyer.service.ts"
+    ]
   }
 }
