@@ -1,8 +1,8 @@
 import { getModelToken } from '@nestjs/mongoose';
 import { Test, TestingModule } from '@nestjs/testing';
-import { MybuyerController } from './mybuyer.controller';
-import { MybuyerService } from './mybuyer.service';
-import { MybuyerRepository } from './repository/mybuyer.repository';
+import { MybuyerController } from '../mybuyer.controller';
+import { MybuyerService } from '../mybuyer.service';
+import { MybuyerRepository } from '../repository/mybuyer.repository';
 
 const goodData = {
   "company_id": "1",
@@ -71,10 +71,10 @@ describe('MybuyerController', () => {
   });
 
   it('should edit new buyer', async () => {
-    expect(await controller.update('1',goodData)).toBe(goodData);
+    expect(await controller.update(goodData)).toBe(goodData);
   });
 
   it('should fail edit new buyer', () => {
-    expect(controller.update('0',badData)).rejects.toThrow('Error');
+    expect(controller.update(badData)).rejects.toThrow('Error');
   });
 });

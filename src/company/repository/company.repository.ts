@@ -26,6 +26,13 @@ export class CompanyRepository {
         return await this.companyModel.find();
     }
 
+    async getPerPage(page: number, limit: number): Promise<Company[]> {
+        return await this.companyModel
+                    .find()
+                    .skip(Number(page) * Number(limit))
+                    .limit(Number(limit));
+    }
+
     async getSimilarCompanyCode(keyword: string) {
         return await this.companyModel
                     .findOne({company_code: {$regex: keyword, $options: 'i'} })

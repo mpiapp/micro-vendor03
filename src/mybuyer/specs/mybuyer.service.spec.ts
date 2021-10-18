@@ -47,6 +47,6 @@ describe('MybuyerService', () => {
   });
 
   it('should edit buyer in my buyer list',async () => {
-    expect(await service.update('1', goodData)).toBe(goodData);
+    expect(await service.update(goodData)).toBe(goodData);
   });
 });
