@@ -20,10 +20,10 @@ export class MybuyerController {
         }
     }
 
-    @Put('/:companyId')
-    async update(@Param('companyId') companyId: string, @Body() mybuyer: MybuyerEditDTO): Promise<Mybuyer> {
+    @Put()
+    async update(@Body() mybuyer: MybuyerEditDTO): Promise<Mybuyer> {
         try {
-            return await this.mybuyerService.update(companyId, mybuyer);
+            return await this.mybuyerService.update(mybuyer);
         }
         catch(exception) {
             throw new BadRequestException(exception.message)

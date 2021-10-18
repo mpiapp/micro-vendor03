@@ -39,7 +39,7 @@ describe('Company Controller', () => {
   });
 
   it('should get all company', async () => {
-    expect(await controller.getAllCompany()).toMatchObject(companyDetail);
+    expect(await controller.getAllCompany(1,2)).toMatchObject(companyDetail);
   });
 
   it('should throw an error when get not exists company', () => {

@@ -24,7 +24,10 @@ export class CompanyService {
         return this.companyRepository.getOne(id)
     }
 
-    async getAllCompany(): Promise<Company[]> {
+    async getAllCompany(page, limit): Promise<Company[]> {
+        if(page != undefined) {
+            return this.companyRepository.getPerPage(page - 1, limit);
+        }
         return this.companyRepository.getAll();
     }
 }

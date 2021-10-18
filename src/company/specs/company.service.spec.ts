@@ -29,7 +29,11 @@ describe('Company Service', () => {
   });
 
   it('should get all company', async () => {
-    expect(await service.getAllCompany()).toMatchObject(companyDetail);
+    expect(await service.getAllCompany(1,2)).toMatchObject(companyDetail);
+  });
+
+  it('should get all company', async () => {
+    expect(await service.getAllCompany(undefined,undefined)).toBeUndefined;
   });
 
   it('should get company by id', async () => { 
