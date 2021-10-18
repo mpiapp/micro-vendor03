@@ -13,7 +13,7 @@ export class MybuyerRepository {
         return await this.mybuyerModel.create(mybuyer);
     }
 
-    async upate(companyId: string, mybuyer: MybuyerEditDTO): Promise<Mybuyer> {
-        return await this.mybuyerModel.findByIdAndUpdate({company_id: companyId}, mybuyer);
+    async upate(mybuyer: MybuyerEditDTO): Promise<Mybuyer> {
+        return await this.mybuyerModel.findByIdAndUpdate({company_id: mybuyer.company_id}, mybuyer);
     }
 }

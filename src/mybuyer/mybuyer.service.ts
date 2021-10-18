@@ -12,7 +12,7 @@ export class MybuyerService {
         return await this.mybuyerRepository.create(mybuyer);
     }
 
-    async update(companyId: string, mybuyer: MybuyerEditDTO): Promise<Mybuyer> {
-        return await this.mybuyerRepository.upate(companyId, mybuyer);
+    async update(mybuyer: MybuyerEditDTO): Promise<Mybuyer> {
+        return await this.mybuyerRepository.upate(mybuyer);
     }
 }
