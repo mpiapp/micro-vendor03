@@ -15,6 +15,11 @@ export class CompanyController {
 		  return await this.companyService.getAllCompany();
 	  }
 
+    @Get('/page/:page/:limit')
+    async getAllCompanyPerPage(): Promise<Company[]> {
+		  return await this.companyService.getAllCompany();
+	  }
+
     @Get('/:id')
     async getCompanyDetail(@Param('id') id: string): Promise<Company> {
       try {

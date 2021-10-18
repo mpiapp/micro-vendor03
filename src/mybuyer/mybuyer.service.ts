@@ -13,6 +13,6 @@ export class MybuyerService {
     }
 
     async update(mybuyer: MybuyerEditDTO): Promise<Mybuyer> {
-        return await this.mybuyerRepository.upate(mybuyer);
+        return await this.mybuyerRepository.update(mybuyer);
     }
 }
