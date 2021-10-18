@@ -7,9 +7,13 @@ import { companyDetail } from './data.mock';
       }
       return dto;
     },
-    find: () => {
-      return companyDetail;
-    },
+    find: jest.fn((data) => ({
+      skip: jest.fn().mockReturnThis(),
+      limit:jest.fn(() => {
+        return companyDetail;
+        
+      }),
+    })),
     findById: ({ _id: id }) => {
       if(companyDetail._id !== id) {
         throw new Error('Test Error');

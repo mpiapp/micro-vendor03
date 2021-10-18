@@ -1,9 +1,9 @@
-import { Body, Controller, BadRequestException, Param, Post, Put, Get } from '@nestjs/common';
+import { Body, Controller, BadRequestException, Param, Post, Put, Get, Query } from '@nestjs/common';
 import { CompanyService } from './company.service';
 import { companyDetailAddDTO } from './dto/company.detail.add.dto';
 import { companyDetailEditDTO } from './dto/company.detail.edit.dto';
 import { Company } from './schema/company.schema';
-import { ApiTags } from "@nestjs/swagger";
+import { ApiQuery, ApiTags } from "@nestjs/swagger";
 
 @ApiTags('Company Module')
 @Controller('company')
@@ -11,13 +11,10 @@ export class CompanyController {
     constructor(private readonly companyService: CompanyService) {}
   
     @Get()
-    async getAllCompany(): Promise<Company[]> {
-		  return await this.companyService.getAllCompany();
-	  }
-
-    @Get('/page/:page/:limit')
-    async getAllCompanyPerPage(): Promise<Company[]> {
-		  return await this.companyService.getAllCompany();
+    @ApiQuery({name:'page', required: false})
+    @ApiQuery({name:'limit', required: false})
+    async getAllCompany(@Query('page') page: number, @Query('limit') limit: number): Promise<Company[]> {
+		  return await this.companyService.getAllCompany(page, limit);
 	  }
 
     @Get('/:id')
