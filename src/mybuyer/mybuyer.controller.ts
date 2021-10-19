@@ -1,4 +1,4 @@
-import { Controller, Post, Body, BadRequestException, Put, Param, Delete } from '@nestjs/common';
+import { Controller, Post, Body, BadRequestException, Put, Param, Delete, Get } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { MybuyerAddDTO } from './dto/mybuyer.add.dto';
 import { MybuyerDeleteDTO } from './dto/mybuyer.delete.dto';
@@ -10,6 +10,22 @@ import { Mybuyer } from './schema/mybuyer.schema';
 @Controller('mybuyer')
 export class MybuyerController {
     constructor(private readonly mybuyerService: MybuyerService) {}
+
+    @Get()
+    async getAll(): Promise<Mybuyer[]> {
+        return await this.mybuyerService.getAll();
+    }
+
+
+    @Get('/:company_id/:buyer_id')
+    async get(@Param('company_id') company_id: string, @Param('buyer_id') buyer_id: string): Promise<Mybuyer> {
+        try {
+            return await this.mybuyerService.get(company_id, buyer_id);
+        }
+        catch(exception) {
+            throw new BadRequestException(exception.message)
+        }
+    }
 
     @Post()
     async create(@Body() mybuyer: MybuyerAddDTO): Promise<Mybuyer> {

@@ -48,17 +48,29 @@ const RepositoryMock = {
 
     return dto; 
   },
-  findOne: jest.fn((goodData) => ({
+  find: () => {
+    return goodData;
+  },
+  findOne:  jest.fn((dto) => ({ 
+    select: jest.fn(() => {
+      if(dto.company_id === 'INVALID') {
+        throw new Error('Error');
+      }
+
+      if(dto.company_id === 'INVALID2') {
+        return null;
+      }
+
+      return dto;
+    }),
     skip: jest.fn().mockReturnThis(),
     countDocuments:jest.fn(() => {
-      if(goodData.company_id === '1') {
+      if(dto.company_id === '1') {
         return 0;
       }
 
       throw new Error('Error');
-      
-       
-    }),
+    }) 
   })),
   findOneAndUpdate : (id, data) => {
     if(data.company_id === '1') {
@@ -109,5 +121,23 @@ describe('MybuyerController', () => {
 
   it('should fail delete non exists buyer', () => {
     expect(controller.delete(deletedDataFail)).rejects.toThrow('Document not exists');
+  });
+
+  it('should get all buyer from my buyer list',async () => {
+    expect(await controller.getAll()).toBe(goodData);
+  });
+
+
+  it('should get single buyer from my buyer list',async () => {
+    const buyer = await controller.get('1','1');
+    expect(buyer.company_id).toBe('1');
+  });
+
+  it('should failed get none existing buyer from my buyer list', () => {
+    expect(controller.get('INVALID','INVALID')).rejects.toThrow('Error');
+  });
+
+  it('should failed get none existing buyer from my buyer list', () => {
+    expect(controller.get('INVALID2','INVALID2')).rejects.toThrow('Document not exists');
   });
 });

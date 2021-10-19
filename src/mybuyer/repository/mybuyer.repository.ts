@@ -10,6 +10,18 @@ import { Mybuyer, MybuyerDocument } from "../schema/mybuyer.schema";
 export class MybuyerRepository {
     constructor(@InjectModel(Mybuyer.name) private mybuyerModel: Model<MybuyerDocument>) {}
 
+    async getAll(): Promise<Mybuyer[]> {
+        return await this.mybuyerModel.find({isDeleted: { "$ne": true }});
+    }
+
+    async get(company_id: string, buyer_id: string): Promise<Mybuyer> {
+        const doc = await this.mybuyerModel.findOne({company_id: company_id, buyer_id: buyer_id, isDeleted: { "$ne": true }}).select({});
+        if(!doc?.company_id) {
+            throw new BadRequestException('Document not exists');
+        }
+        return doc;
+    }
+
     async countBy(param: {}): Promise<number> {
         return this.mybuyerModel.findOne(param).countDocuments();
     }
