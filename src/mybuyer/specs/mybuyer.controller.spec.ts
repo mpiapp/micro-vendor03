@@ -26,6 +26,20 @@ const badData = {
   ]
 }
 
+const deletedData = {
+  "company_id": "1",
+  "buyer_id": "1",
+  "isDeleted": true,
+  "deletedAt": new Date
+}
+
+const deletedDataFail = {
+  "company_id": "0",
+  "buyer_id": "1",
+  "isDeleted": true,
+  "deletedAt": new Date
+}
+
 const RepositoryMock = {
   create: (dto) => {
     if(dto.company_id !== '1') {
@@ -87,5 +101,13 @@ describe('MybuyerController', () => {
 
   it('should fail edit new buyer', () => {
     expect(controller.update(badData)).rejects.toThrow('Document not exists');
+  });
+
+  it('should delete a buyer', async () => {
+    expect(await controller.delete(deletedData)).toStrictEqual({"message": "Success. Document has been deleted", "statusCode": 200});
+  });
+
+  it('should fail delete non exists buyer', () => {
+    expect(controller.delete(deletedDataFail)).rejects.toThrow('Document not exists');
   });
 });
