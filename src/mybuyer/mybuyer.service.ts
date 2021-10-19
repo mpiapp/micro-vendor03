@@ -9,6 +9,14 @@ import { Mybuyer } from './schema/mybuyer.schema';
 export class MybuyerService {
     constructor(private mybuyerRepository: MybuyerRepository) {}
 
+    async getAll(): Promise<Mybuyer[]> {
+        return await this.mybuyerRepository.getAll();
+    }
+
+    async get(company_id: string, buyer_id: string): Promise<Mybuyer> {
+        return await this.mybuyerRepository.get(company_id, buyer_id);
+    }
+
     async create(mybuyer: MybuyerAddDTO): Promise<Mybuyer> {
         return await this.mybuyerRepository.create(mybuyer);
     }
