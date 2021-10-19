@@ -34,8 +34,20 @@ const RepositoryMock = {
 
     return dto; 
   },
+  findOne: jest.fn((goodData) => ({
+    skip: jest.fn().mockReturnThis(),
+    countDocuments:jest.fn(() => {
+      if(goodData.company_id === '1') {
+        return 0;
+      }
+
+      throw new Error('Error');
+      
+       
+    }),
+  })),
   findByIdAndUpdate: (id, dto) => {
-    if(id.company_id !== '1') {
+    if(id !== '1') {
       throw new Error('Error');
     }
 
@@ -65,6 +77,7 @@ describe('MybuyerController', () => {
   it('should add new buyer into buyer list', async () => {
     expect(await controller.create(goodData)).toBe(goodData);
   });
+
 
   it('should fail when add new buyer into buyer list', () => {
     expect(controller.create(badData)).rejects.toThrow('Error');

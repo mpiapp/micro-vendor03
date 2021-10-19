@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common";
-import { CompanyRepository } from "../company/repository/company.repository";
+import { CompanyRepository } from "../repository/company.repository";
 
 @Injectable()
-export class HelperService {
-    constructor(private readonly companyRepository: CompanyRepository) {}
+export class CompanyHelper {
+    constructor(private companyRepository: CompanyRepository) {}
 
     createAbbr(companyName: string) {
         return companyName.replace(/[^A-Za-z]/g, '')
@@ -12,7 +12,7 @@ export class HelperService {
                 .toUpperCase();
     }
 
-    async generateCompanyCode(companyName: string) {
+    async generateCompanyCode(companyName: string): Promise<string> {
         const companyAbbr = this.createAbbr(companyName);
         const similarAbbrObj = await this.companyRepository.getSimilarCompanyCode(companyAbbr);
         const similarAbbr    = similarAbbrObj?.company_code || null;
