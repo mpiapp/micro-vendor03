@@ -30,6 +30,9 @@ const RepositoryMock = {
   create: (dto) => {
     return dto; 
   },
+  find: () => {
+    return goodData;
+  },
   findOne: jest.fn((data) => ({
     skip: jest.fn().mockReturnThis(),
     countDocuments:jest.fn(() => {
@@ -39,10 +42,8 @@ const RepositoryMock = {
       else if(data.company_id === '0') {
         return 1;
       }
-
+      
       throw new Error('Error');
-      
-      
     }),
   })),
   findOneAndUpdate : (id, data) => {
@@ -83,4 +84,9 @@ describe('MybuyerService', () => {
   it('should edit buyer in my buyer list',async () => {
     expect(await service.update(goodData)).toBe(goodData);
   });
+
+  it('should get all buyer from my buyer list',async () => {
+    expect(await service.getAll()).toBe(goodData);
+  });
+ 
 });
