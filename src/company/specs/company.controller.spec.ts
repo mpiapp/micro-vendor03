@@ -3,16 +3,16 @@ import { CompanyController } from '../company.controller';
 import { CompanyService } from '../company.service';
 import { getModelToken } from '@nestjs/mongoose';
 import { CompanyRepository } from '../repository/company.repository';
-import { HelperService } from '../../helper/helper.service';
 import { RepositoryMock } from '../mock/repository.mock';
 import { companyDetail, companyDetailErr } from '../mock/data.mock';
+import { CompanyHelper } from '../helper/company.helper';
 
 describe('Company Controller', () => {
   let controller: CompanyController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [CompanyRepository, HelperService, CompanyService, {
+      providers: [CompanyRepository, CompanyHelper, CompanyService, {
         provide: getModelToken('Company'),
         useValue: RepositoryMock,
       }],

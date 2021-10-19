@@ -15,10 +15,36 @@ const goodData = {
   ]
 }
 
+const badData = {
+  "company_id": "0",
+  "buyer_id": "1",
+  "payment_term": "COD",
+  "initial_discount": 10,
+  "product_discount": [
+    {"product_id":1, "discount":10},
+    {"product_id":2, "discount":2}
+  ]
+}
+
 const RepositoryMock = {
   create: (dto) => {
     return dto; 
   },
+  findOne: jest.fn((goodData) => ({
+    skip: jest.fn().mockReturnThis(),
+    countDocuments:jest.fn(() => {
+      if(goodData.company_id === '1') {
+        return 0;
+      }
+      else if(goodData.company_id === '0') {
+        return 1;
+      }
+
+      throw new Error('Error');
+      
+      
+    }),
+  })),
   findByIdAndUpdate : (id, dto) => {
     return dto;
   }
@@ -44,6 +70,10 @@ describe('MybuyerService', () => {
 
   it('should add buyer into mybuyer',async () => {
     expect(await service.create(goodData)).toBe(goodData);
+  });
+
+  it('should fail add buyer into mybuyer', () => {
+    expect(service.create(badData)).rejects.toThrow('Duplicate entity');
   });
 
   it('should edit buyer in my buyer list',async () => {
