@@ -20,6 +20,12 @@ export class Mybuyer {
 
     @Prop()
     product_discount: object[];
+
+    @Prop({default: false})
+    isDeleted: boolean;
+
+    @Prop({default: null})
+    deletedAt: Date;
 }
 
 export const MybuyerSchema = SchemaFactory.createForClass(Mybuyer);
