@@ -45,8 +45,12 @@ const RepositoryMock = {
       
     }),
   })),
-  findByIdAndUpdate : (id, dto) => {
-    return dto;
+  findOneAndUpdate : (id, data) => {
+    if(data.company_id === '1') {
+      return data;
+    }
+
+    throw new Error('Error');
   }
 }
 

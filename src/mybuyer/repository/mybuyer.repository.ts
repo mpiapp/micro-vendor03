@@ -21,6 +21,10 @@ export class MybuyerRepository {
     }
 
     async update(mybuyer: MybuyerEditDTO): Promise<Mybuyer> {
-        return await this.mybuyerModel.findByIdAndUpdate(mybuyer.company_id, mybuyer);
+        const docs =  await this.mybuyerModel.findOneAndUpdate({ company_id : mybuyer.company_id, buyer_id: mybuyer.buyer_id }, mybuyer, {new:true});
+        if(!docs?.company_id) {
+            throw new BadRequestException('Document not exists');
+        }
+        return docs;
     }
 }

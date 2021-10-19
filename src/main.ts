@@ -20,9 +20,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document, 
-    //{ swaggerOptions: { defaultModelsExpandDepth: -1 } }
-  );
+  SwaggerModule.setup('api', app, document);
   const bugsnagMiddleware = Bugsnag.getPlugin('express');
   app.use(bugsnagMiddleware.requestHandler);
   app.use(bugsnagMiddleware.errorHandler);

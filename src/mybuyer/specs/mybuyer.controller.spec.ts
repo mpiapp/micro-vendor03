@@ -46,12 +46,10 @@ const RepositoryMock = {
        
     }),
   })),
-  findByIdAndUpdate: (id, dto) => {
-    if(id !== '1') {
-      throw new Error('Error');
+  findOneAndUpdate : (id, data) => {
+    if(data.company_id === '1') {
+      return data;
     }
-
-    return dto;
   }
 }
 
@@ -88,6 +86,6 @@ describe('MybuyerController', () => {
   });
 
   it('should fail edit new buyer', () => {
-    expect(controller.update(badData)).rejects.toThrow('Error');
+    expect(controller.update(badData)).rejects.toThrow('Document not exists');
   });
 });
