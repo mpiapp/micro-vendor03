@@ -10,7 +10,7 @@ export class MybuyerRepository {
     constructor(@InjectModel(Mybuyer.name) private mybuyerModel: Model<MybuyerDocument>) {}
 
     async countBy(param: {}): Promise<number> {
-        return await this.mybuyerModel.findOne(param).countDocuments();
+        return this.mybuyerModel.findOne(param).countDocuments();
     }
     
     async create(myBuyer: MybuyerAddDTO): Promise<Mybuyer> {

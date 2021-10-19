@@ -30,13 +30,13 @@ const RepositoryMock = {
   create: (dto) => {
     return dto; 
   },
-  findOne: jest.fn((goodData) => ({
+  findOne: jest.fn((data) => ({
     skip: jest.fn().mockReturnThis(),
     countDocuments:jest.fn(() => {
-      if(goodData.company_id === '1') {
+      if(data.company_id === '1') {
         return 0;
       }
-      else if(goodData.company_id === '0') {
+      else if(data.company_id === '0') {
         return 1;
       }
 
