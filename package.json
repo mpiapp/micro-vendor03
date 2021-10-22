@@ -88,7 +88,8 @@
       "verification.module.ts",
       "role.module.ts",
       "user.module.ts",
-      "mybuyer.module.ts"
+      "mybuyer.module.ts",
+      "warehouse.module.ts"
     ]
   }
 }
