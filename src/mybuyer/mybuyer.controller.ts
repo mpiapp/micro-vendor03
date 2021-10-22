@@ -16,11 +16,21 @@ export class MybuyerController {
         return await this.mybuyerService.getAll();
     }
 
+    @Get('/:company_id')
+    async getbyVendor(@Param('company_id') company_id: string): Promise<Mybuyer[]> {
+        try {
+            return await this.mybuyerService.getbyVendor(company_id);
+        }
+        catch(exception) {
+            throw new BadRequestException(exception.message)
+        }
+    }
+
 
     @Get('/:company_id/:buyer_id')
-    async get(@Param('company_id') company_id: string, @Param('buyer_id') buyer_id: string): Promise<Mybuyer> {
+    async getbyBuyer(@Param('company_id') company_id: string, @Param('buyer_id') buyer_id: string): Promise<Mybuyer> {
         try {
-            return await this.mybuyerService.get(company_id, buyer_id);
+            return await this.mybuyerService.getbyBuyer(company_id, buyer_id);
         }
         catch(exception) {
             throw new BadRequestException(exception.message)

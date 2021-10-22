@@ -14,7 +14,14 @@ export class MybuyerRepository {
         return await this.mybuyerModel.find({isDeleted: { "$ne": true }});
     }
 
-    async get(company_id: string, buyer_id: string): Promise<Mybuyer> {
+    async getbyVendor(company_id: string): Promise<Mybuyer[]> {
+        const doc = await this.mybuyerModel.find({company_id: company_id, isDeleted: { "$ne": true }});
+        return doc;
+
+        
+    }
+
+    async getbyBuyer(company_id: string, buyer_id: string): Promise<Mybuyer> {
         const doc = await this.mybuyerModel.findOne({company_id: company_id, buyer_id: buyer_id, isDeleted: { "$ne": true }}).select({});
         if(!doc?.company_id) {
             throw new BadRequestException('Document not exists');
