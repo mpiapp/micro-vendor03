@@ -14,5 +14,5 @@ export class MybuyerEditDTO {
     initial_discount: number;
 
     @ApiProperty()
-    product_discount: object[];
+    product: object[];
 }
