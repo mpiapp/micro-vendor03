@@ -48,7 +48,11 @@ const RepositoryMock = {
 
     return dto; 
   },
-  find: () => {
+  find: (id) => {
+    if(id.company_id === 'INVALID') {
+      throw new Error('Error');
+    }
+
     return goodData;
   },
   findOne:  jest.fn((dto) => ({ 
@@ -129,15 +133,24 @@ describe('MybuyerController', () => {
 
 
   it('should get single buyer from my buyer list',async () => {
-    const buyer = await controller.get('1','1');
+    const buyer = await controller.getbyBuyer('1','1');
     expect(buyer.company_id).toBe('1');
   });
 
   it('should failed get none existing buyer from my buyer list', () => {
-    expect(controller.get('INVALID','INVALID')).rejects.toThrow('Error');
+    expect(controller.getbyBuyer('INVALID','INVALID')).rejects.toThrow('Error');
   });
 
   it('should failed get none existing buyer from my buyer list', () => {
-    expect(controller.get('INVALID2','INVALID2')).rejects.toThrow('Document not exists');
+    expect(controller.getbyBuyer('INVALID2','INVALID2')).rejects.toThrow('Document not exists');
   });
+
+  it('should get prefered buyer by vendor id',async () => {
+    expect(await controller.getbyVendor('1')).toBe(goodData);
+  });
+
+  it('should failed get prefered buyer by vendor id', () => {
+    expect(controller.getbyVendor('INVALID')).rejects.toThrow('Error');
+  });
+
 });
