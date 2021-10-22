@@ -9,9 +9,9 @@ const goodData = {
   "buyer_id": "1",
   "payment_term": "COD",
   "initial_discount": 10,
-  "product_discount": [
-    {"product_id":1, "discount":10},
-    {"product_id":2, "discount":2}
+  "product": [
+    {"product_id":1, "discount":10, "payment_term":null},
+    {"product_id":2, "discount":2, "payment_term":3}
   ]
 }
 
@@ -20,9 +20,9 @@ const badData = {
   "buyer_id": "1",
   "payment_term": "COD",
   "initial_discount": 10,
-  "product_discount": [
-    {"product_id":1, "discount":10},
-    {"product_id":2, "discount":2}
+  "product": [
+    {"product_id":1, "discount":10, "payment_term":null},
+    {"product_id":2, "discount":2, "payment_term":3}
   ]
 }
 

@@ -19,7 +19,7 @@ export class Mybuyer {
     initial_discount: number;
 
     @Prop()
-    product_discount: object[];
+    product: object[];
 
     @Prop({default: false})
     isDeleted: boolean;
