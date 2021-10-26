@@ -34,4 +34,9 @@ export class WarehouseController {
     async get(@Param('id') id: string): Promise<Warehouse> {
         return this.warhouseService.get(id);
     }
+
+    @Get('/vendor/:vendorId') 
+    async getByVendor(@Param('vendorId') vendorId: string): Promise<Warehouse[]> {
+        return this.warhouseService.getByVendor(vendorId);
+    }
 }

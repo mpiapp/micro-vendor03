@@ -34,4 +34,8 @@ export class WarehouseRepository {
     async get(id: string): Promise<Warehouse> {
         return await this.warehouseModel.findOne({_id: id, isDeleted: { "$ne": true } });
     }
+
+    async getByVendor(vendorId: string): Promise<Warehouse[]> {
+        return await this.warehouseModel.find({vendor_id: vendorId, isDeleted: { "$ne": true } });
+    }
 }

@@ -45,6 +45,9 @@ const RepositoryMock = {
   },
   findOne: (id) => {
     return goodData;
+  },
+  find: () => {
+    return goodData; 
   }
 }
 
@@ -85,5 +88,9 @@ describe('WarehouseController', () => {
 
   it('should get warehouse', async () => {
     expect(await controller.get('1')).toBe(goodData);
+  });
+
+  it('should get warehouse by vendor', async () => {
+    expect(await controller.getByVendor('1')).toBe(goodData);
   });
 });
