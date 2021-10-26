@@ -19,6 +19,12 @@ export class Warehouse {
 
     @Prop()
     email: string;
+
+    @Prop({default: false})
+    isDeleted: boolean;
+
+    @Prop({default: null})
+    deletedAt: Date;
 }
 
 export const WarehouseSchema = SchemaFactory.createForClass(Warehouse);

@@ -1,7 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { warehouseAddDTO } from '../dto/warehouse.add.dto';
+import { warehouseDeleteDTO } from '../dto/warehouse.delete.dto';
 import { warehouseEditDTO } from '../dto/warehouse.edit.dto';
 import { Warehouse, WarehouseDocument } from '../schema/warehouse.schema';
 
@@ -16,5 +17,17 @@ export class WarehouseRepository {
 
     async update(warehouse: warehouseEditDTO): Promise<Warehouse> {
         return await this.warehouseModel.findOneAndUpdate({_id: warehouse._id}, warehouse, { new: true , useFindAndModify: false});
-    }   
+    }  
+    
+    async delete(warehouse: warehouseDeleteDTO) {
+        const docs =  await this.warehouseModel.findOneAndUpdate({ _id : warehouse._id, isDeleted: { "$ne": true } }, warehouse);
+        if(!docs?._id) {
+            throw new BadRequestException('Document not exists');
+        }
+
+        return {
+            "statusCode": 200,
+            "message": "Success. Document has been deleted",
+          }
+    }
 }

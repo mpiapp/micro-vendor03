@@ -5,7 +5,7 @@ import { WarehouseController } from '../warehouse.controller';
 import { WarehouseService } from '../warehouse.service';
 
 const goodData = {
-  "vendor_id": "string",
+  "vendor_id": "1",
   "name": "string",
   "address": "string",
   "phone": "string",
@@ -13,7 +13,7 @@ const goodData = {
 }
 
 const editData = {
-  "_id": "string",
+  "_id": "1",
   "vendor_id": "string",
   "name": "string",
   "address": "string",
@@ -21,13 +21,27 @@ const editData = {
   "email": "string"
 }
 
+const deleteData = {
+  "_id": "1",
+  "isDeleted": true,
+  "deletedAt": new Date
+}
+
+const deleteDataFail = {
+  "_id": "INVALID",
+  "isDeleted": true,
+  "deletedAt": new Date
+}
+
 const RepositoryMock = {
   create: (dto) => {
     return dto;
   },
   findOneAndUpdate: (id, dto) => {
-    
-    return dto;
+    if(dto._id === '1') {
+      return dto;
+    }
+   
   },
 }
 
@@ -56,5 +70,13 @@ describe('WarehouseController', () => {
 
   it('should edit warehouse', async () => {
     expect(await controller.update(editData)).toBe(editData);
+  });
+
+  it('should delete warehouse', async () => {
+    expect(await controller.delete(deleteData)).toStrictEqual({"message": "Success. Document has been deleted", "statusCode": 200});
+  });
+
+  it('should fail delete warehouse', () => {
+    expect( controller.delete(deleteDataFail)).rejects.toThrow('Document not exists');
   });
 });

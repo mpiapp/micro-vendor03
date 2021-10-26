@@ -1,6 +1,7 @@
-import { Body, Controller, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Param, Post, Put } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { warehouseAddDTO } from './dto/warehouse.add.dto';
+import { warehouseDeleteDTO } from './dto/warehouse.delete.dto';
 import { warehouseEditDTO } from './dto/warehouse.edit.dto';
 import { Warehouse } from './schema/warehouse.schema';
 import { WarehouseService } from './warehouse.service';
@@ -18,5 +19,14 @@ export class WarehouseController {
     @Put()
     async update(@Body() warehouse: warehouseEditDTO): Promise<Warehouse> {
         return this.warhouseService.update(warehouse);
+    }
+
+    @Delete()
+    async delete(@Body() warehouse: warehouseDeleteDTO): Promise<{}> {
+
+        warehouse.isDeleted = true;
+        warehouse.deletedAt = new Date;
+
+        return await this.warhouseService.delete(warehouse);
     }
 }
