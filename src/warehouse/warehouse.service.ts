@@ -20,4 +20,7 @@ export class WarehouseService {
     async delete(warehouse: warehouseDeleteDTO): Promise<{}> {
         return await this.warehouseRepository.delete(warehouse);
     }
+    async get(id: string): Promise<Warehouse> {
+        return await this.warehouseRepository.get(id);
+    }
 }
