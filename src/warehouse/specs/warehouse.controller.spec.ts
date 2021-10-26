@@ -11,10 +11,24 @@ const goodData = {
   "phone": "string",
   "email": "string"
 }
+
+const editData = {
+  "_id": "string",
+  "vendor_id": "string",
+  "name": "string",
+  "address": "string",
+  "phone": "string",
+  "email": "string"
+}
+
 const RepositoryMock = {
   create: (dto) => {
     return dto;
-  }
+  },
+  findOneAndUpdate: (id, dto) => {
+    
+    return dto;
+  },
 }
 
 describe('WarehouseController', () => {
@@ -38,5 +52,9 @@ describe('WarehouseController', () => {
 
   it('should create new warehouse', async () => {
     expect(await controller.create(goodData)).toBe(goodData);
+  });
+
+  it('should edit warehouse', async () => {
+    expect(await controller.update(editData)).toBe(editData);
   });
 });
