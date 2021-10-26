@@ -19,7 +19,7 @@ export class WarehouseRepository {
         return await this.warehouseModel.findOneAndUpdate({_id: warehouse._id}, warehouse, { new: true , useFindAndModify: false});
     }  
     
-    async delete(warehouse: warehouseDeleteDTO) {
+    async delete(warehouse: warehouseDeleteDTO): Promise<{}> {
         const docs =  await this.warehouseModel.findOneAndUpdate({ _id : warehouse._id, isDeleted: { "$ne": true } }, warehouse);
         if(!docs?._id) {
             throw new BadRequestException('Document not exists');
@@ -29,5 +29,9 @@ export class WarehouseRepository {
             "statusCode": 200,
             "message": "Success. Document has been deleted",
           }
+    }
+
+    async get(id: string): Promise<Warehouse> {
+        return await this.warehouseModel.findOne({_id: id, isDeleted: { "$ne": true } });
     }
 }

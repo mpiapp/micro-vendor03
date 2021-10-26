@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { warehouseAddDTO } from './dto/warehouse.add.dto';
 import { warehouseDeleteDTO } from './dto/warehouse.delete.dto';
@@ -28,5 +28,10 @@ export class WarehouseController {
         warehouse.deletedAt = new Date;
 
         return await this.warhouseService.delete(warehouse);
+    }
+
+    @Get('/:id') 
+    async get(@Param('id') id: string): Promise<Warehouse> {
+        return this.warhouseService.get(id);
     }
 }

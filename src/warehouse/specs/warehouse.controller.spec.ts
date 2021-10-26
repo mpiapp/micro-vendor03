@@ -43,6 +43,9 @@ const RepositoryMock = {
     }
    
   },
+  findOne: (id) => {
+    return goodData;
+  }
 }
 
 describe('WarehouseController', () => {
@@ -78,5 +81,9 @@ describe('WarehouseController', () => {
 
   it('should fail delete warehouse', () => {
     expect( controller.delete(deleteDataFail)).rejects.toThrow('Document not exists');
+  });
+
+  it('should get warehouse', async () => {
+    expect(await controller.get('1')).toBe(goodData);
   });
 });
