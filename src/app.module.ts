@@ -7,6 +7,7 @@ import { RoleModule } from './role/role.module';
 import { UserModule } from './user/user.module';
 import { MybuyerModule } from './mybuyer/mybuyer.module';
 import { WarehouseModule } from './warehouse/warehouse.module';
+import { VendorModule } from './vendor/vendor.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { WarehouseModule } from './warehouse/warehouse.module';
     UserModule,
     MybuyerModule,
     WarehouseModule,
+    VendorModule
   ],
 })
 export class AppModule {}
