@@ -89,7 +89,9 @@
       "role.module.ts",
       "user.module.ts",
       "mybuyer.module.ts",
-      "warehouse.module.ts"
+      "warehouse.module.ts",
+      "vendor.module.ts",
+      "vendor.dto.ts"
     ]
   }
 }
