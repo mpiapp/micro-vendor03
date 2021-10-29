@@ -40,6 +40,7 @@ export class MybuyerController {
     @Post()
     async create(@Body() mybuyer: MybuyerAddDTO): Promise<Mybuyer> {
         try {
+            mybuyer.status = '1';
             return await this.mybuyerService.create(mybuyer);
         }
         catch(exception) {
@@ -69,4 +70,16 @@ export class MybuyerController {
             throw new BadRequestException(exception.message)
         }
     }
+
+    @Post('/mybuyerRequest')
+    async MybuyerRequest(@Body() mybuyer: MybuyerAddDTO) {
+        mybuyer.status = '0';
+        return await this.mybuyerService.create(mybuyer);
+    }
+
+    @Get('/mybuyerRequest/:company_id')
+    async MybuyerRequestGetAll(@Param('company_id') company_id: string): Promise<Mybuyer[]>  {
+        return await this.mybuyerService.getRequestbyVendor(company_id);
+    }
+   
 }

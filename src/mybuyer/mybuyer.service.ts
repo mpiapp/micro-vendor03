@@ -17,6 +17,10 @@ export class MybuyerService {
         return await this.mybuyerRepository.getbyVendor(company_id);
     }
 
+    async getRequestbyVendor(company_id: string): Promise<Mybuyer[]> {
+        return await this.mybuyerRepository.getRequestbyVendor(company_id);
+    }
+
     async getbyBuyer(company_id: string, buyer_id: string): Promise<Mybuyer> {
         return await this.mybuyerRepository.getbyBuyer(company_id, buyer_id);
     }
