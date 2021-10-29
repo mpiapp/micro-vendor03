@@ -21,6 +21,9 @@ export class Mybuyer {
     @Prop()
     product: object[];
 
+    @Prop({default: null})
+    status: string;
+
     @Prop({default: false})
     isDeleted: boolean;
 

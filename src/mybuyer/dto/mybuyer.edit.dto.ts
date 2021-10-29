@@ -15,4 +15,7 @@ export class MybuyerEditDTO {
 
     @ApiProperty()
     product: object[];
+
+    @ApiProperty()
+    status: string;
 }

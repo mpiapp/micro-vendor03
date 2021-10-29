@@ -7,6 +7,7 @@ import { MybuyerRepository } from '../repository/mybuyer.repository';
 const goodData = {
   "company_id": "1",
   "buyer_id": "1",
+  "status":"1",
   "payment_term": "COD",
   "initial_discount": 10,
   "product": [
@@ -18,6 +19,7 @@ const goodData = {
 const badData = {
   "company_id": "0",
   "buyer_id": "1",
+  "status":"1",
   "payment_term": "COD",
   "initial_discount": 10,
   "product": [

@@ -9,6 +9,7 @@ const goodData = {
   "buyer_id": "1",
   "payment_term": "COD",
   "initial_discount": 10,
+  "status": "1",
   "product": [
     {"product_id":1, "discount":10, "payment_term":null},
     {"product_id":2, "discount":2, "payment_term":3}
@@ -18,6 +19,7 @@ const goodData = {
 const badData = {
   "company_id": "0",
   "buyer_id": "1",
+  "status": "1",
   "payment_term": "COD",
   "initial_discount": 10,
   "product": [
@@ -151,6 +153,14 @@ describe('MybuyerController', () => {
 
   it('should failed get prefered buyer by vendor id', () => {
     expect(controller.getbyVendor('INVALID')).rejects.toThrow('Error');
+  });
+
+  it('should create request  new buyer into buyer list', async () => {
+    expect(await controller.MybuyerRequest(goodData)).toBe(goodData);
+  });
+
+  it('should get requested  buyer by vendor id',async () => {
+    expect(await controller.MybuyerRequestGetAll('1')).toBe(goodData);
   });
 
 });

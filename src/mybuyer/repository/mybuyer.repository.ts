@@ -17,8 +17,11 @@ export class MybuyerRepository {
     async getbyVendor(company_id: string): Promise<Mybuyer[]> {
         const doc = await this.mybuyerModel.find({company_id: company_id, isDeleted: { "$ne": true }});
         return doc;
+    }
 
-        
+    async getRequestbyVendor(company_id: string): Promise<Mybuyer[]> {
+        const doc = await this.mybuyerModel.find({company_id: company_id, status:'0', isDeleted: { "$ne": true }});
+        return doc;
     }
 
     async getbyBuyer(company_id: string, buyer_id: string): Promise<Mybuyer> {
