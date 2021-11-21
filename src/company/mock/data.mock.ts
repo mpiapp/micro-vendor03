@@ -1,9 +1,9 @@
 export const companyDetail = {
     "company_code":"TES01",
     "type":"",
-    "category":0,
+    "category":"",
     "legal_name":"PT. TESTING",
-    "alias_name":"",
+    "name":"",
     "address": "",
     "longitude":"",
     "latitude":"",
@@ -22,9 +22,9 @@ export const companyDetail = {
   export const companyDetailErr = {
     "company_code":"TES02",
     "type":"",
-    "category":0,
+    "category":"",
     "legal_name":"",
-    "alias_name":"",
+    "name":"",
     "address": "",
     "longitude":"",
     "latitude":"",

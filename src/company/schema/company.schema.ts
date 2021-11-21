@@ -13,13 +13,13 @@ export class Company {
     type: string;
 
     @Prop()
-    category: number;
+    category: string;
 
     @Prop({unique: true, index: true})
     legal_name: string;
 
     @Prop()
-    alias_name: string;
+    name: string;
 
     @Prop()
     address: string;
@@ -36,7 +36,7 @@ export class Company {
     @Prop()
     whatsapp: string;
 
-    @Prop()
+    @Prop({unique: true, index: true})
     email: string;
 
     @Prop()
@@ -53,6 +53,12 @@ export class Company {
 
     @Prop({default: VerificationStatus.UNVERIFIED})
     verification_status: string;
+
+    @Prop({default: false})
+    isDeleted: boolean;
+
+    @Prop({default: null})
+    deletedAt: Date;
 }
 
 export const CompanySchema = SchemaFactory.createForClass(Company);

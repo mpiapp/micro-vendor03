@@ -90,8 +90,8 @@
       "user.module.ts",
       "mybuyer.module.ts",
       "warehouse.module.ts",
-      "vendor.module.ts",
-      "vendor.dto.ts"
+      "setting.module.ts",
+      "setting.schema.ts"
     ]
   }
 }

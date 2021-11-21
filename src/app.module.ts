@@ -4,10 +4,9 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { CompanyModule } from './company/company.module';
 import { VerificationModule } from './verification/verification.module';
 import { RoleModule } from './role/role.module';
-import { UserModule } from './user/user.module';
 import { MybuyerModule } from './mybuyer/mybuyer.module';
 import { WarehouseModule } from './warehouse/warehouse.module';
-import { VendorModule } from './vendor/vendor.module';
+import { SettingModule } from './setting/setting.module';
 
 @Module({
   imports: [
@@ -16,10 +15,9 @@ import { VendorModule } from './vendor/vendor.module';
     CompanyModule,
     VerificationModule,
     RoleModule,
-    UserModule,
     MybuyerModule,
     WarehouseModule,
-    VendorModule
+    SettingModule
   ],
 })
 export class AppModule {}

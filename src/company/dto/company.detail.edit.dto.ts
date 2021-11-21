@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsEmail, IsNumber, IsOptional } from 'class-validator';
+import { IsNotEmpty, IsEmail, IsOptional } from 'class-validator';
 import { ApiProperty } from "@nestjs/swagger";
 
 export class companyDetailEditDTO {
@@ -10,8 +10,7 @@ export class companyDetailEditDTO {
     @ApiProperty()
     @IsOptional()
     @IsNotEmpty()
-    @IsNumber()
-    category: number;
+    category: string;
 
     @ApiProperty()
     @IsOptional()
@@ -21,7 +20,7 @@ export class companyDetailEditDTO {
     @ApiProperty()
     @IsOptional()
     @IsNotEmpty()
-    alias_name: string;
+    name: string;
 
     @ApiProperty()
     @IsOptional()
