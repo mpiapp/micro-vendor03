@@ -93,11 +93,29 @@ export class VendorController {
 		  return await this.vendorService.getAllVendor(payload.value.page, payload.value.limit);
 	  }
 
-    @MessagePattern('vendor.get.one')
-    async getCompanyDetail(@Payload() payload: string): Promise<Vendor> {
+    @MessagePattern('vendor.get.detail')
+    async getCompanyDetail(@Payload() payload: any): Promise<any> {
+      try {
+        console.log(payload.value._id);
+        let vendorDetail = await this.vendorService.getCompanyDetail(payload.value._id);
 
-      console.log(payload);
-      return await this.vendorService.getCompanyDetail(payload);
+        return {
+          status: HttpStatus.OK,
+          message: "success get vendor",
+          data: vendorDetail,
+          errors: null
+        }
+      }
+      catch(error) {
+        return {
+          status: HttpStatus.BAD_REQUEST,
+          message: "error",
+          data: null,
+          errors: error.message
+        };
+      }
+      
+      
 	  }
 
     @Post()
