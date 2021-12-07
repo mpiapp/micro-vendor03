@@ -1,5 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import {MicroserviceOptions, Transport} from "@nestjs/microservices";
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
 import Bugsnag from '@bugsnag/js';
@@ -12,6 +13,7 @@ Bugsnag.start({
   logger: null
 });
 
+/*
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const config = new DocumentBuilder()
@@ -27,4 +29,25 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(process.env.APP_PORT);
 }
+bootstrap();
+*/
+
+async function bootstrap() {
+  const app = await NestFactory.createMicroservice<MicroserviceOptions>(AppModule, {
+      transport: Transport.KAFKA,
+      options: {
+          client: {
+              brokers: ['18.138.95.160:9092','18.138.95.160:9093','18.138.95.160:9094'],
+          },
+          consumer: {
+              groupId: 'vendor-micro',
+          }
+      }
+  });
+
+  app.listen()
+  console.log('Vendor service is listening...');
+}
+
+
 bootstrap();
