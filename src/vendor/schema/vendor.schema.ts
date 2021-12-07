@@ -1,13 +1,13 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose"
 import { Document } from "mongoose";
-import { VerificationStatus } from "../company.enum";
+import { VerificationStatus } from "../vendor.enum";
 
 @Schema({versionKey: false, strict: "throw",  timestamps: true})
-export class Company {
+export class Vendor {
     _id: string;
     
-    @Prop({unique: true, index: true})
-    company_code: string;
+    @Prop()
+    name: string;
 
     @Prop()
     type: string;
@@ -18,8 +18,8 @@ export class Company {
     @Prop({unique: true, index: true})
     legal_name: string;
 
-    @Prop()
-    name: string;
+    @Prop({unique: true, index: true})
+    company_code: string;
 
     @Prop()
     address: string;
@@ -51,6 +51,9 @@ export class Company {
     @Prop()
     twitter: string;
 
+    @Prop()
+    legal_docs: [];
+    
     @Prop({default: VerificationStatus.UNVERIFIED})
     verification_status: string;
 
@@ -61,5 +64,5 @@ export class Company {
     deletedAt: Date;
 }
 
-export const CompanySchema = SchemaFactory.createForClass(Company);
-export type CompanyDocument = Company & Document;
+export const VendorSchema = SchemaFactory.createForClass(Vendor);
+export type VendorDocument = Vendor & Document;

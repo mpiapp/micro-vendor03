@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common";
-import { CompanyRepository } from "../repository/company.repository";
+import { VendorRepository } from "../repository/vendor.repository";
 
 @Injectable()
-export class CompanyHelper {
-    constructor(private companyRepository: CompanyRepository) {}
+export class VendorHelper {
+    constructor(private vendorRepository: VendorRepository) {}
 
     createAbbr(companyName: string) {
         return companyName.replace(/[^A-Za-z]/g, '')
@@ -14,7 +14,7 @@ export class CompanyHelper {
 
     async generateCompanyCode(companyName: string): Promise<string> {
         const companyAbbr = this.createAbbr(companyName);
-        const similarAbbrObj = await this.companyRepository.getSimilarCompanyCode(companyAbbr);
+        const similarAbbrObj = await this.vendorRepository.getSimilarCompanyCode(companyAbbr);
         const similarAbbr    = similarAbbrObj?.company_code || null;
         const lastID = parseInt(similarAbbr?.substr(-2)) || 0;
         const incID = ('0' + (lastID + 1)).slice(-2);
