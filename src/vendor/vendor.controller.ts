@@ -13,13 +13,13 @@ export class VendorController {
     @MessagePattern('vendor.register')
     async registerVendor(@Payload() payload: any): Promise<any>{
 
-      let vendorData: vendorRegisterDTO = {
+      let vendorData: any = {
         name: payload.value.company_name
       };
-      
+
       try {
         let data =  await this.vendorService.registerVendor(vendorData);
-
+        
         return {
           status: HttpStatus.OK,
           message: "success register vendor",

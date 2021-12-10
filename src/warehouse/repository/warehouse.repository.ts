@@ -16,11 +16,11 @@ export class WarehouseRepository {
     }
 
     async update(warehouse: warehouseEditDTO): Promise<Warehouse> {
-        return await this.warehouseModel.findOneAndUpdate({_id: warehouse._id}, warehouse, { new: true , useFindAndModify: false});
+        return await this.warehouseModel.findOneAndUpdate({_id: warehouse._id}, { warehouse }, { new: true , useFindAndModify: false});
     }  
     
     async delete(warehouse: warehouseDeleteDTO): Promise<{}> {
-        const docs =  await this.warehouseModel.findOneAndUpdate({ _id : warehouse._id, isDeleted: { "$ne": true } }, warehouse);
+        const docs =  await this.warehouseModel.findOneAndUpdate({ _id : warehouse._id, isDeleted: { "$ne": true } }, { warehouse });
         if(!docs?._id) {
             throw new BadRequestException('Document not exists');
         }

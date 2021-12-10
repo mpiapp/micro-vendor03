@@ -11,7 +11,8 @@ export class VendorRepository {
 
     constructor(@InjectModel(Vendor.name) private vendorModel: Model<VendorDocument>) {}
 
-    async register(vendorData: vendorRegisterDTO): Promise<Vendor> {
+    async register(vendorData: any): Promise<Vendor> {
+      
         return await this.vendorModel.create(vendorData);
     }
 
@@ -24,7 +25,7 @@ export class VendorRepository {
     }
 
     async update(vendorDetail: vendorDetailEditDTO): Promise<Vendor> {
-        return await this.vendorModel.findOneAndUpdate({ _id: vendorDetail._id }, vendorDetail, { new: true , useFindAndModify: false})
+        return await this.vendorModel.findOneAndUpdate({ _id: vendorDetail._id }, { vendorDetail }, { new: true , useFindAndModify: false})
     }
 
     async getOne(id: string): Promise<Vendor> {

@@ -11,18 +11,18 @@ export class VendorService {
     constructor(private vendorRepository: VendorRepository, private helper: VendorHelper) {}
 
     async addVendorDetail(companyDetail: vendorDetailAddDTO): Promise<Vendor> {
-        const companyCode = await this.helper.generateCompanyCode(companyDetail.legal_name);
-        companyDetail.company_code = companyCode;
+       // const companyCode = await this.helper.generateCompanyCode(companyDetail.legal_name);
+       // companyDetail.company_code = companyCode;
 
         return this.vendorRepository.create(companyDetail);
     }
 
     async AddCompanyDetail(companyDetail:  vendorDetailEditDTO): Promise<Vendor> {
-        if(companyDetail.legal_name) {
-            const companyCode = await this.helper.generateCompanyCode(companyDetail.legal_name);
-            companyDetail.company_code = companyCode;
-            
-        }
+       // if(companyDetail.legal_name) {
+       //     const companyCode = await this.helper.generateCompanyCode(companyDetail.legal_name);
+       //     companyDetail.company_code = companyCode;
+       //     
+       // }
       
         return this.vendorRepository.update(companyDetail)
     }
@@ -37,6 +37,8 @@ export class VendorService {
     }
 
     async registerVendor(vendorData: vendorRegisterDTO): Promise<Vendor> {
+        const companyCode = await this.helper.generateCompanyCode(vendorData.name);
+        vendorData.company_code = companyCode;
         return await this.vendorRepository.register(vendorData);
     }
 
