@@ -40,10 +40,10 @@ export class VendorController {
 
     @MessagePattern('vendor.detail')
 	  async addVendorDetail(@Payload() payload: any): Promise<any> {
-
+      
       try {
         let vendorDetail =  await this.vendorService.AddCompanyDetail(payload.value);
-
+      
         return {
           status: HttpStatus.OK,
           message: "success add company detail",

@@ -23,7 +23,6 @@ export class VendorService {
        //     companyDetail.company_code = companyCode;
        //     
        // }
-      
         return this.vendorRepository.update(companyDetail)
     }
 

@@ -24,8 +24,8 @@ export class VendorRepository {
         return await this.vendorModel.create(vendorDetail);
     }
 
-    async update(vendorDetail: vendorDetailEditDTO): Promise<Vendor> {
-        return await this.vendorModel.findOneAndUpdate({ _id: vendorDetail._id }, { vendorDetail }, { new: true , useFindAndModify: false})
+    async update(vendorDetail: any): Promise<Vendor> {
+        return await this.vendorModel.findOneAndUpdate({ _id: vendorDetail._id }, vendorDetail, { new: true , useFindAndModify: false})
     }
 
     async getOne(id: string): Promise<Vendor> {

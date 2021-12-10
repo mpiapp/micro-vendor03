@@ -38,6 +38,9 @@ async function bootstrap() {
       options: {
           client: {
               brokers: ['52.77.183.114:9092','52.77.183.114:9093','52.77.183.114:9094'],
+              //brokers: ['18.138.95.160:9092','18.138.95.160:9093','18.138.95.160:9094'],
+
+              
           },
           consumer: {
               groupId: 'vendor-micro',
