@@ -22,7 +22,7 @@ export class VendorController {
         
         return {
           status: HttpStatus.OK,
-          message: "success register vendor",
+          message: "Success register vendor",
           data: data,
           errors: null
         }
@@ -46,7 +46,7 @@ export class VendorController {
       
         return {
           status: HttpStatus.OK,
-          message: "success add company detail",
+          message: "Success add company detail",
           data: vendorDetail,
           errors: null
         };
@@ -71,7 +71,7 @@ export class VendorController {
 
         return {
           status: HttpStatus.OK,
-          message: "success add legal docs",
+          message: "Success add legal docs",
           data: legalDocs,
           errors: null
         };
@@ -96,7 +96,6 @@ export class VendorController {
     @MessagePattern('vendor.get.detail')
     async getCompanyDetail(@Payload() payload: any): Promise<any> {
       try {
-        console.log(payload.value._id);
         let vendorDetail = await this.vendorService.getCompanyDetail(payload.value._id);
 
         return {
