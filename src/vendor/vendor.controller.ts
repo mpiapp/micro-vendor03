@@ -30,9 +30,9 @@ export class VendorController {
       catch(error) {
         return {
           status: HttpStatus.BAD_REQUEST,
-          message: "error",
+          message: error.message,
           data: null,
-          errors: error.message
+          errors: error
         };
       }
     } 
@@ -54,9 +54,9 @@ export class VendorController {
       catch(error) {
         return {
           status: HttpStatus.BAD_REQUEST,
-          message: "error",
+          message: error.message,
           data: null,
-          errors: error.message
+          errors: error
         };
       }
      
@@ -79,9 +79,9 @@ export class VendorController {
       catch(error) {
         return {
           status: HttpStatus.BAD_REQUEST,
-          message: "error",
+          message: error.message,
           data: null,
-          errors: error.message
+          errors: error
         };
       }
 
@@ -108,9 +108,9 @@ export class VendorController {
       catch(error) {
         return {
           status: HttpStatus.BAD_REQUEST,
-          message: "error",
+          message: error.message,
           data: null,
-          errors: error.message
+          errors: error
         };
       }
       
