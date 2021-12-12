@@ -63,7 +63,7 @@ export class VendorController {
 	  }
 
 
-    @MessagePattern('vendor.legal')
+    @MessagePattern('vendor.legaldoc')
 	  async addVendorDocs(@Payload() payload: any): Promise<any> {
 
       try {
@@ -71,7 +71,7 @@ export class VendorController {
 
         return {
           status: HttpStatus.OK,
-          message: "Success add legal docs",
+          message: "Success update legal docs",
           data: legalDocs,
           errors: null
         };
