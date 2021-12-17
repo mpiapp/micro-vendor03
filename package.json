@@ -100,7 +100,10 @@
       "vendor.service.ts",
       "vendor.register.dto.ts",
       "vendor.helper.ts",
-      "vendor.repository.ts"
+      "vendor.repository.ts",
+      "warehouse.repository.ts",
+      "warehouse.controller.ts",
+      "warehouse.service.ts"
     ]
   }
 }

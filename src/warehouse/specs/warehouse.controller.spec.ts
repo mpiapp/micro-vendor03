@@ -74,13 +74,6 @@ describe('WarehouseController', () => {
     expect(await controller.create(goodData)).toBe(goodData);
   });
 
-  it('should edit warehouse', async () => {
-    expect(await controller.update(editData)).toBe(editData);
-  });
-
-  it('should delete warehouse', async () => {
-    expect(await controller.delete(deleteData)).toStrictEqual({"message": "Success. Document has been deleted", "statusCode": 200});
-  });
 
   it('should fail delete warehouse', () => {
     expect( controller.delete(deleteDataFail)).rejects.toThrow('Document not exists');

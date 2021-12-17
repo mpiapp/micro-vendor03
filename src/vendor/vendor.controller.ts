@@ -1,8 +1,6 @@
-import { Body, Controller, BadRequestException, Param, Post, Put, Get, HttpStatus } from '@nestjs/common';
+import { Body, Controller, BadRequestException, Param, Post, HttpStatus } from '@nestjs/common';
 import { VendorService } from './vendor.service';
-import { vendorRegisterDTO } from './dto/vendor.register.dto';
 import { vendorDetailAddDTO } from './dto/vendor.detail.add.dto';
-import { vendorDetailEditDTO } from './dto/vendor.detail.edit.dto';
 import { Vendor } from './schema/vendor.schema';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 

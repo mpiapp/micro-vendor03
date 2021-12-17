@@ -2,8 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { vendorDetailAddDTO } from '../dto/vendor.detail.add.dto';
-import { vendorDetailEditDTO } from '../dto/vendor.detail.edit.dto';
-import { vendorRegisterDTO } from '../dto/vendor.register.dto';
 import { Vendor, VendorDocument } from '../schema/vendor.schema';
 
 @Injectable()
